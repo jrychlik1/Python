@@ -31,21 +31,42 @@ def zadanie2():
 
 
 
+def zadanie3(number):
+    
+    last_number = '1'
+    if number == 1:
+        return last_number
+    elif number > 1:
+        for num in range(2, number + 1):
+            last_number += ' '
+            new_number = ''
+            count = 1
+            for i in range(0, len(last_number) - 1):
+                if last_number[i] == last_number[i + 1]:
+                    count += 1
+                else:
+                    new_number += str(count) + str(last_number[i])
+                    count = 1
+            last_number = new_number
+        return last_number
+    else:
+        return 'Liczba musi być większa od 0!'
+
 def main():
     work = False
-
     while not work:
         try:
             exercise = int(input('Które zadanie uruchomić: '))
             work = True
         except ValueError:
-            print('Numer zadania musi być od 1 do 2')
+            print('Numer zadania musi być od 1 do 3')
 
     if exercise == 1:
         zadanie1()
     elif exercise == 2:
         zadanie2()
-
+    elif exercise == 3:
+        print(zadanie3(8))
     else:
         print('Nie ma takiego zadania')
 
